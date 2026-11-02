@@ -1,0 +1,19 @@
+@use '../abstracts';
+
+#footer {
+    background-color: abstracts.$primary-color;
+    text-align: center;
+    padding: 20px;
+
+    #github-logo {
+        width: 65px;
+        height: auto;
+        display: block;
+        margin: 0 auto 10px;
+    }
+
+    p {
+        color: abstracts.$white;
+        font-size: 14px;
+    }
+}

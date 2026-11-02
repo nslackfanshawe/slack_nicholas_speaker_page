@@ -1,0 +1,5 @@
+@use '../abstracts';
+
+body {
+    font-family: abstracts.$main-font;
+}
