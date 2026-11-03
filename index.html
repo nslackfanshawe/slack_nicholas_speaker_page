@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +6,10 @@
     <title>NS Speakers</title>
     <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/main.css">
+    <script
+    type="module"
+    src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js">
+    </script>
 </head>
 <body>
     <header id="main-nav">
@@ -36,14 +39,110 @@
         </div>
     </header>
 
-    <main>
+    <main id="home">  
+        <section id="explore">
+            <div class="grid-con center-grid-con">
+
+                <div class="col-span-full">
+                    <h1>Explore the Speaker</h1>
+                    <p>
+                        Discover the features behind NS Speakers.
+                        Select a hotspot to learn more.
+                    </p>
+                </div>
+
+                <div id="ar-container" class="col-span-full center-grid-con">
+                    <model-viewer
+                        id="speaker-model"
+                        src="models/bluetooth_speaker_v5_gltf.gltf"
+                        ar
+                        ar-modes="webxr scene-viewer quick-look"
+                        camera-controls
+                        tone-mapping="neutral"
+                        poster="images/poster.webp"
+                        shadow-intensity="1"
+                        alt="Interactive AR Model of the NS Speaker">
+
+                        <button
+                            class="Hotspot"
+                            slot="hotspot-1"
+                            data-hotspot="sound"
+                            data-position="-0.03510258537154853m -0.010897112750440197m -0.04767702519893646m"
+                            data-normal="0m 0m -1m"
+                            data-visibility-attribute="visible"
+                            aria-label="Powerful Immersive Sound">
+                        </button>
+
+                        <button
+                            class="Hotspot"
+                            slot="hotspot-2"
+                            data-hotspot="controls"
+                            data-position="-0.0112401175674713m 0.06125373029486471m 0.015176349030392167m"
+                            data-normal="-0.00015072608777565025m 0.9999222064795533m 0.012472300137032221m"
+                            data-visibility-attribute="visible"
+                            aria-label="Effortless Control">
+                        </button>
+
+                        <button
+                            class="Hotspot"
+                            slot="hotspot-4"
+                            data-hotspot="usbc"
+                            data-position="-0.10438195850608714m -0.026605841556487625m 0.0556388734533142m"
+                            data-normal="0.16386239515975695m -0.9864688859337937m 0.005315311566370334m"
+                            data-visibility-attribute="visible"
+                            aria-label="USB-C Connectivity">
+                        </button>
+
+                        <button
+                            class="Hotspot"
+                            slot="hotspot-5"
+                            data-hotspot="headphones"
+                            data-position="0.11282157974406633m -0.03536680457323768m 0.057484118994719835m"
+                            data-normal="-0.0010014447135264m 0.05358730682181668m 0.998562665863325m"
+                            data-visibility-attribute="visible"
+                            aria-label="Headphone Support">
+                        </button>
+
+                        <button
+                            class="Hotspot"
+                            slot="hotspot-6"
+                            data-hotspot="design"
+                            data-position="0.16350251436233515m -0.003930657554348488m -0.01802946158931168m"
+                            data-normal="1m 0m 0m"
+                            data-visibility-attribute="visible"
+                            aria-label="Crafted with Precision">
+                        </button>
+                        <div class="progress-bar hide" slot="progress-bar">
+                            <div class="update-bar"></div>
+                        </div>
+                        <button id="ar-button" slot="ar-button">
+                            View in your space
+                        </button>
+                    </model-viewer>
+
+                    <div id="hotspot-info" class="hidden" aria-live="polite">
+                        <button
+                            id="close-hotspot"
+                            type="button"
+                            aria-label="Close information">
+                            &times;
+                        </button>
+                        <img id="hotspot-image" src="#" alt="">
+
+                        <div id="hotspot-content">
+                            <h2 id="hotspot-title"></h2>
+                            <p id="hotspot-description"></p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
 
     </main>
 
     <footer id="footer">
-        <a href="https://github.com/nslackfanshawe" target="_blank" rel="noopener noreferrer">
-            <img src="images/github-logo.png" alt="GitHub Logo" id="github-logo">
-        </a>
         <p>&copy; 2026 Nicholas Slack</p>
     </footer>
 
