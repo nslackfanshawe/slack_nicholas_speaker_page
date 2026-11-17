@@ -1,15 +1,20 @@
 //Hamburger Menu
-const hamburgerMenu = document.querySelector("#hamburger-menu");
-const mobileNav = document.querySelector("#mobile-nav");
+(() => {
+    "use strict";
 
-function toggleMenu() {
-    mobileNav.classList.toggle("hidden");
+    const hamburgerMenu = document.querySelector("#hamburger-menu");
+    const mobileNav = document.querySelector("#mobile-nav");
 
-    const isOpen = !mobileNav.classList.contains("hidden");
-    hamburgerMenu.setAttribute("aria-expanded", isOpen);
-}
+    function toggleMenu() {
+        mobileNav.classList.toggle("hidden");
 
-hamburgerMenu.addEventListener("click", toggleMenu);
+        const isOpen = !mobileNav.classList.contains("hidden");
+        hamburgerMenu.setAttribute("aria-expanded", isOpen);
+    }
+
+    hamburgerMenu.addEventListener("click", toggleMenu);
+})();
+
 
 //AR-Model
 (() => {
@@ -107,11 +112,69 @@ hamburgerMenu.addEventListener("click", toggleMenu);
             progressBar.classList.add("hide");
         }
     }
-    
+
     hotspots.forEach((hotspot) => {
         hotspot.addEventListener("click", showHotspotInfo);
     });
 
     closeButton.addEventListener("click", closeHotspotInfo);
     modelViewer.addEventListener("progress", updateProgress);
+})();
+
+
+//Scrolling Animation
+(() => {
+    "use strict";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const canvas = document.querySelector("#explode-view");
+    const context = canvas.getContext("2d");
+
+    canvas.width = 1280;
+    canvas.height = 720;
+
+    const frameCount = 300;
+    const images = [];
+
+    const speaker = {
+        frame: 0
+    };
+
+    for (let i = 0; i < frameCount; i++) {
+        const img = new Image();
+
+        img.src = `images/animation/bluetooth_animation${i.toString().padStart(4, '0')}.png`;
+
+        images.push(img);
+    }
+
+        gsap.to(speaker, {
+        frame: frameCount - 1,
+        ease: "none",
+        snap: "frame",
+        scrollTrigger: {
+            trigger: "#animation-container",
+            start: "center center",
+            end: "+=2000",
+            pin: true,
+            scrub: 1,
+            markers: false
+        },
+        onUpdate: render
+    });
+
+    images[0].addEventListener("load", render);
+
+    function render() {
+        const img = images[speaker.frame];
+
+        if (!img.complete || img.naturalWidth === 0) {
+            return;
+        }
+
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.drawImage(img, 0, 0, canvas.width, canvas.height);
+    }
+
 })();
