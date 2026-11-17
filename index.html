@@ -1,14 +1,17 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NS Speakers</title>
+
     <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/main.css">
+
     <script
-    type="module"
-    src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js">
+        type="module"
+        src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js">
     </script>
 </head>
 <body>
@@ -34,12 +37,14 @@
 
                 <ul id="mobile-nav" class="hidden">
                     <li><a href="#explore">Explore the Speaker</a></li>
+                    <li><a href="#scroll-animation">Discover the Design</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main id="home">  
+    <main id="home">
+
         <section id="explore">
             <div class="grid-con center-grid-con">
 
@@ -112,9 +117,11 @@
                             data-visibility-attribute="visible"
                             aria-label="Crafted with Precision">
                         </button>
+
                         <div class="progress-bar hide" slot="progress-bar">
                             <div class="update-bar"></div>
                         </div>
+
                         <button id="ar-button" slot="ar-button">
                             View in your space
                         </button>
@@ -127,6 +134,7 @@
                             aria-label="Close information">
                             &times;
                         </button>
+
                         <img id="hotspot-image" src="#" alt="">
 
                         <div id="hotspot-content">
@@ -134,18 +142,34 @@
                             <p id="hotspot-description"></p>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
 
+        <section id="scroll-animation">
+            <div class="grid-con center-grid-con">
+                <div class="col-span-full">
+                    <h2>Discover the Design</h2>
+                    <p>
+                        Explore the Design of NS Speakers.
+                    </p>
+                </div>
 
+                <div class="col-span-full">
+                    <div id="animation-container">
+                        <canvas id="explode-view"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer id="footer">
         <p>&copy; 2026 Nicholas Slack</p>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.0/ScrollTrigger.min.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
