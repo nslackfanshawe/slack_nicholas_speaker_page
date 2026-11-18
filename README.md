@@ -7,7 +7,7 @@ Open the file in VSCode
 Open index.html
 
 ## Usage
-This website serves at the home page for NS Speakers displaying an A/R model, an X-Ray view, and an Animation.
+This website serves as the home page for NS Speakers displaying an A/R model, an X-Ray view, and an Animation.
 
 ## Contributing
 1. Fork it!
