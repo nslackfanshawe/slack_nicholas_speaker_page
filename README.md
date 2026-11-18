@@ -7,7 +7,7 @@ Open the file in VSCode
 Open index.html
 
 ## Usage
-This website serves as a portfolio that showcases my skills learned in the Interactive Media Design program. 
+This website serves at the home page for NS Speakers displaying an A/R model, an X-Ray view, and an Animation.
 
 ## Contributing
 1. Fork it!
