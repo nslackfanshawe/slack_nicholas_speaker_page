@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,8 +35,10 @@
                 </button>
 
                 <ul id="mobile-nav" class="hidden">
-                    <li><a href="#explore">Explore the Speaker</a></li>
-                    <li><a href="#scroll-animation">Discover the Design</a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#explore">Explore</a></li>
+                    <li><a href="#scroll-animation">Design</a></li>
+                    <li><a href="#xray-comparison">X-Ray</a></li>
                 </ul>
             </nav>
         </div>
@@ -158,6 +159,47 @@
                 <div class="col-span-full">
                     <div id="animation-container">
                         <canvas id="explode-view"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="xray-comparison">
+            <div class="grid-con center-grid-con">
+                <div class="col-span-full">
+                    <h2>See What's Inside</h2>
+                    <p>
+                        Discover the engineering behind NS Speakers.
+                        Drag the slider to see whats inside of NS speakers.
+                    </p>
+                </div>
+
+                <div class="col-span-full">
+                    <div id="comparison-container">
+                        <img
+                            src="images/normal-speaker.png"
+                            alt="Normal view of NS Speakers"
+                            id="normal-speaker"
+                        >
+
+                        <div id="xray-overlay">
+                            <img
+                                src="images/x-ray-speaker.png"
+                                alt="X-ray view showing the internal components of NS Speakers"
+                                id="xray-speaker"
+                            >
+                        </div>
+
+                        <div id="comparison-divider"></div>
+
+                        <input
+                            type="range"
+                            id="comparison-slider"
+                            min="0"
+                            max="100"
+                            value="50"
+                            aria-label="Compare normal and X-ray speaker views"
+                        >
                     </div>
                 </div>
             </div>

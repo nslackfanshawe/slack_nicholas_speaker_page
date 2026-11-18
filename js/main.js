@@ -178,3 +178,27 @@
     }
 
 })();
+
+//X-Ray 
+(() => {
+    "use strict";
+
+    const slider = document.querySelector("#comparison-slider");
+    const overlay = document.querySelector("#xray-overlay");
+    const divider = document.querySelector("#comparison-divider");
+    const xrayImage = document.querySelector("#xray-speaker");
+    const container = document.querySelector("#comparison-container");
+
+    function updateComparison() {
+        const value = slider.value;
+
+        overlay.style.width = `${value}%`;
+        divider.style.left = `${value}%`;
+        xrayImage.style.width = `${container.clientWidth}px`;
+    }
+
+    slider.addEventListener("input", updateComparison);
+    window.addEventListener("resize", updateComparison);
+
+    updateComparison();
+})();
