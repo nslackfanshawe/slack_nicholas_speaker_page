@@ -39,6 +39,7 @@
                     <li><a href="#explore">Explore</a></li>
                     <li><a href="#scroll-animation">Design</a></li>
                     <li><a href="#xray-comparison">X-Ray</a></li>
+                    <li><a href="#materials">Materials</a></li>
                 </ul>
             </nav>
         </div>
@@ -56,6 +57,13 @@
                         Select a hotspot to learn more.
                     </p>
                 </div>
+
+                <div id="hotspot-loader" class="loader hidden col-span-full" role="status">
+                    <div class="spinner"></div>
+                    <p>Loading speaker information...</p>
+                </div>
+
+                <p id="hotspot-error" class="error-message hidden col-span-full" role="alert"></p>
 
                 <div id="ar-container" class="col-span-full center-grid-con">
                     <model-viewer
@@ -76,7 +84,8 @@
                             data-position="-0.03510258537154853m -0.010897112750440197m -0.04767702519893646m"
                             data-normal="0m 0m -1m"
                             data-visibility-attribute="visible"
-                            aria-label="Powerful Immersive Sound">
+                            aria-label="Powerful Immersive Sound"
+                            disabled>
                         </button>
 
                         <button
@@ -86,7 +95,8 @@
                             data-position="-0.0112401175674713m 0.06125373029486471m 0.015176349030392167m"
                             data-normal="-0.00015072608777565025m 0.9999222064795533m 0.012472300137032221m"
                             data-visibility-attribute="visible"
-                            aria-label="Effortless Control">
+                            aria-label="Effortless Control"
+                            disabled>
                         </button>
 
                         <button
@@ -96,7 +106,8 @@
                             data-position="-0.10438195850608714m -0.026605841556487625m 0.0556388734533142m"
                             data-normal="0.16386239515975695m -0.9864688859337937m 0.005315311566370334m"
                             data-visibility-attribute="visible"
-                            aria-label="USB-C Connectivity">
+                            aria-label="USB-C Connectivity"
+                            disabled>
                         </button>
 
                         <button
@@ -106,7 +117,8 @@
                             data-position="0.11282157974406633m -0.03536680457323768m 0.057484118994719835m"
                             data-normal="-0.0010014447135264m 0.05358730682181668m 0.998562665863325m"
                             data-visibility-attribute="visible"
-                            aria-label="Headphone Support">
+                            aria-label="Headphone Support"
+                            disabled>
                         </button>
 
                         <button
@@ -116,7 +128,8 @@
                             data-position="0.16350251436233515m -0.003930657554348488m -0.01802946158931168m"
                             data-normal="1m 0m 0m"
                             data-visibility-attribute="visible"
-                            aria-label="Crafted with Precision">
+                            aria-label="Crafted with Precision"
+                            disabled>
                         </button>
 
                         <div class="progress-bar hide" slot="progress-bar">
@@ -136,7 +149,7 @@
                             &times;
                         </button>
 
-                        <img id="hotspot-image" src="#" alt="">
+                        <img id="hotspot-image" src="images/front.png" alt="">
 
                         <div id="hotspot-content">
                             <h2 id="hotspot-title"></h2>
@@ -170,7 +183,7 @@
                     <h2>See What's Inside</h2>
                     <p>
                         Discover the engineering behind NS Speakers.
-                        Drag the slider to see whats inside of NS speakers.
+                        Drag the slider to see what's inside of NS Speakers.
                     </p>
                 </div>
 
@@ -204,6 +217,44 @@
                 </div>
             </div>
         </section>
+
+        <section id="materials">
+            <div class="grid-con center-grid-con">
+
+                <div class="col-span-full">
+                    <h2>Crafted with Quality</h2>
+                    <p>
+                        Discover the carefully selected materials behind
+                        the design of NS Speakers.
+                    </p>
+                </div>
+
+                <div id="materials-loader" class="loader hidden col-span-full" role="status">
+                    <div class="spinner"></div>
+                    <p>Loading materials...</p>
+                </div>
+
+                <p id="materials-error" class="error-message hidden col-span-full" role="alert"></p>
+
+                <div id="materials-container" class="col-span-full">
+                </div>
+
+                <template id="material-template">
+                    <article class="material-card">
+
+                        <img class="material-image" alt="">
+
+                        <div class="material-content">
+                            <h3 class="material-heading"></h3>
+                            <p class="material-description"></p>
+                        </div>
+
+                    </article>
+                </template>
+
+            </div>
+        </section>
+
     </main>
 
     <footer id="footer">
