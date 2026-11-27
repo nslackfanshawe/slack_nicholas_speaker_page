@@ -30,43 +30,41 @@
     const progressBar = document.querySelector(".progress-bar");
     const updateBar = document.querySelector(".update-bar");
 
-    const hotspotData = [
-        {
-            id: "sound",
-            title: "Powerful Immersive Sound",
-            description: "Experience rich, detailed audio through a carefully designed speaker system. From deep bass to crisp highs, enjoy a balanced listening experience.",
-            image: "images/front.png",
-            alt: "Close-up of the speaker driver"
-        },
-        {
-            id: "controls",
-            title: "Effortless Control",
-            description: "Take control of your listening experience with conveniently positioned buttons. Easily adjust your music and access essential functions.",
-            image: "images/top.png",
-            alt: "Close-up of the speaker controls"
-        },
-        {
-            id: "usbc",
-            title: "USB-C Connectivity",
-            description: "Enjoy convenient USB-C connectivity with a modern connection designed for easy charging and everyday use.",
-            image: "images/back.png",
-            alt: "Close-up of the USB-C port"
-        },
-        {
-            id: "headphones",
-            title: "Headphone Support",
-            description: "Connect your wired headphones directly to the speaker for a more personal listening experience.",
-            image: "images/back.png",
-            alt: "Close-up of the headphone connection"
-        },
-        {
-            id: "design",
-            title: "Crafted with Precision",
-            description: "Combining modern styling with carefully selected finishes, the speaker's exterior is designed to complement your space.",
-            image: "images/Overall.png",
-            alt: "Close-up of the speaker exterior"
+    const hotspotLoader = document.querySelector("#hotspot-loader");
+    const hotspotError = document.querySelector("#hotspot-error");
+
+    let hotspotData = [];
+
+    async function getHotspotData() {
+        hotspotLoader.classList.remove("hidden");
+
+        try {
+            const response = await fetch("https://api.jsonbin.io/v3/b/6b087c3b3957a11c13b4df2e/latest");
+
+            if (!response.ok) {
+                throw new Error("Unable to retrieve hotspot data");
+            }
+
+            const data = await response.json();
+            hotspotData = data.record;
+
+            if (!Array.isArray(hotspotData)) {
+                throw new Error("Invalid hotspot data");
+            }
+
+            hotspots.forEach(hotspot => {
+                hotspot.disabled = false;
+            });
+
+        } catch (error) {
+            console.log(error);
+
+            hotspotError.textContent = "Unable to load speaker information. Please try again later.";
+            hotspotError.classList.remove("hidden");
         }
-    ];
+
+        hotspotLoader.classList.add("hidden");
+    }
 
     function showHotspotInfo(event) {
         const hotspotId = event.currentTarget.dataset.hotspot;
@@ -119,6 +117,8 @@
 
     closeButton.addEventListener("click", closeHotspotInfo);
     modelViewer.addEventListener("progress", updateProgress);
+
+    getHotspotData();
 })();
 
 
@@ -149,7 +149,7 @@
         images.push(img);
     }
 
-        gsap.to(speaker, {
+    gsap.to(speaker, {
         frame: frameCount - 1,
         ease: "none",
         snap: "frame",
@@ -179,6 +179,7 @@
 
 })();
 
+
 //X-Ray 
 (() => {
     "use strict";
@@ -201,4 +202,59 @@
     window.addEventListener("resize", updateComparison);
 
     updateComparison();
+})();
+
+
+//Materials
+(() => {
+    "use strict";
+
+    const materialTemplate = document.querySelector("#material-template");
+    const materialList = document.querySelector("#materials-container");
+    const materialsLoader = document.querySelector("#materials-loader");
+    const materialsError = document.querySelector("#materials-error");
+    async function getMaterialData() {
+        materialsLoader.classList.remove("hidden");
+
+        try {
+            const response = await fetch("https://api.jsonbin.io/v3/b/6b0702b9ffd5d16053dd6f50/latest");
+
+            if (!response.ok) {
+                throw new Error("Unable to retrieve material data");
+            }
+
+            const data = await response.json();
+
+            loadMaterialInfo(data.record);
+
+        } catch (error) {
+            console.log(error);
+
+            materialsError.textContent = "Unable to load speaker materials. Please try again later.";
+            materialsError.classList.remove("hidden");
+        }
+
+        materialsLoader.classList.add("hidden");
+    }
+
+    function loadMaterialInfo(materialListData) {
+        materialListData.forEach(material => {
+            const clone = materialTemplate.content.cloneNode(true);
+
+            const materialHeading = clone.querySelector(".material-heading");
+            materialHeading.textContent = material.title;
+
+            const materialDescription = clone.querySelector(".material-description");
+            materialDescription.textContent = material.description;
+
+            const materialImage = clone.querySelector(".material-image");
+            materialImage.src = material.image;
+            materialImage.alt = material.alt;
+
+            materialList.appendChild(clone);
+        });
+    }
+
+    getMaterialData();
+
 })();
